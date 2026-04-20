@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: quiz-app
-          image: your-dockerhub-username/quiz-app:v1 # The image you pushed in Step 5
+          image: payalojha/quiz-app:v1
+          imagePullPolicy: Always
           ports:
             - containerPort: 8091
           env:
@@ -39,4 +40,4 @@ spec:
   ports:
     - port: 8091
       targetPort: 8091
-      nodePort: 30001 # You can pick any port between 30000-32767
+      nodePort: 30001

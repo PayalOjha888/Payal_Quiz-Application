@@ -49,7 +49,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysqldb # This MUST match your DB_HOST environment variable
+  name: mysqldb
 spec:
   ports:
     - port: 3306
