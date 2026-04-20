@@ -34,17 +34,23 @@ public class QuestionService {
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
 
-    public boolean addQuestion(Questions questions) {
-        Questions saved = questionDao.save(questions);
-        if(saved!=null){
-            return true;
-        }
-        return false;
+    public Questions addQuestion(Questions questions) {
+        return questionDao.save(questions);
     }
 
     public ResponseEntity<String> updateQuestion(Questions question) {
-        questionDao.save(question);
-        return new ResponseEntity<>("Success", HttpStatus.CREATED);
+        if(validateName(question.getQuestionTitle())){
+            questionDao.save(question);
+            return new ResponseEntity<>("Success", HttpStatus.CREATED);
+        }
+        else{
+            throw new RuntimeException("Invalid name");
+        }
+
+    }
+
+    private boolean validateName(String title){
+        return title!=null;
     }
 
     public ResponseEntity<String> deleteQuestionById(int id) {

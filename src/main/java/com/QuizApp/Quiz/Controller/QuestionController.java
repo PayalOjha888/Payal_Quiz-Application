@@ -27,18 +27,8 @@ public class QuestionController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<String> addQuestion(@RequestBody Questions questions){
-
-        try{
-            if(questionService.addQuestion(questions)){
-                return new ResponseEntity<>("Successfully saved the question in database.", HttpStatus.CREATED);
-            }
-            else {
-                return new ResponseEntity<>("Failed to save the data", HttpStatus.FORBIDDEN);
-            }
-        }catch (Exception e){
-            return new ResponseEntity<>("Failed to save the data", HttpStatus.FORBIDDEN);
-        }
+    public ResponseEntity<Questions> addQuestion(@RequestBody Questions questions){
+        return new ResponseEntity<>(questionService.addQuestion(questions), HttpStatus.CREATED);
     }
 
     @PutMapping("add")
