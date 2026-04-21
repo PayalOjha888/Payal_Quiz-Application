@@ -1,11 +1,12 @@
 package com.QuizApp.Quiz.Model;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 
 @Data
-@RequiredArgsConstructor
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Responses {
 
     private Integer id;
